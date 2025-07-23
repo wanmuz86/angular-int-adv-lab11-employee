@@ -1,21 +1,30 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../employee-service';
 import { Employee } from '../employee';
-import { Signal } from '@angular/core';
+import { Signal, signal,computed } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { EmployeeListItemComponent } from '../employee-list-item-component/employee-list-item-component';
 @Component({
   selector: 'app-employee-list-component',
-  imports: [EmployeeListItemComponent],
+  imports: [EmployeeListItemComponent, FormsModule],
   templateUrl: './employee-list-component.html',
   styleUrl: './employee-list-component.css'
 })
 export class EmployeeListComponent {
 
-  employees!:Signal<Employee[]>;
+  // employees!:Signal<Employee[]>;
+  
+  // To hold the search term in the input field
+  searchTerm = signal<string>('');
+
+  filteredEmployees = computed(()=>
+  this.employeeService.employees().filter(employee=> employee.name.toLowerCase().includes(
+    this.searchTerm().toLowerCase()
+  )))
 
   constructor(private employeeService:EmployeeService){
     // Retieve the employees from the service inside constructor
-    this.employees = this.employeeService.employees;
+   // this.employees = this.employeeService.employees;
   }
 
  

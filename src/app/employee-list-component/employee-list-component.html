@@ -1,10 +1,18 @@
 <h2>Employee List</h2>
-@if(employees().length === 0){
-    <p>No employee at the moment. Please add new employee</p>
+@if(filteredEmployees().length === 0){
+<p>No employee at the moment. Please add new employee</p>
 }
 @else {
-    <!-- @for have a track option to track the changes in the list built in -->
-@for (employee of employees(); track employee.id) {
+<!-- @for have a track option to track the changes in the list built in -->
+<div>
+    <!-- Filter the list via onChange event on the input -->
+    <!-- ngModel + derived signal example -->
+    <input type="text" placeholder="Search by name" 
+    [ngModel]="searchTerm()" 
+    (ngModelChange)="searchTerm.set($event)" />
+</div>
+
+@for (employee of filteredEmployees(); track employee.id) {
 <app-employee-list-item-component [employee]="employee"></app-employee-list-item-component>
 }
 }
