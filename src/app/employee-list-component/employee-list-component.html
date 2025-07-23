@@ -13,6 +13,9 @@
 </div>
 
 @for (employee of filteredEmployees(); track employee.id) {
-<app-employee-list-item-component [employee]="employee"></app-employee-list-item-component>
+<app-employee-list-item-component 
+[employee]="employee"
+(deleteEmployeeEvent)="handleDeleteEmployee($event)"
+></app-employee-list-item-component>
 }
 }

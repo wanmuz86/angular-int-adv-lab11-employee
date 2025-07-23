@@ -27,6 +27,14 @@ export class EmployeeListComponent {
    // this.employees = this.employeeService.employees;
   }
 
+   handleDeleteEmployee(id: number) {
+    // Emit an event to delete the employee
+    // This method should be implemented in the parent component
+    // Same as non signal use @Output()
+
+    console.log(`Delete employee with id: ${id}`);
+    this.employeeService.deleteEmployee(id);
+  }
  
 
 }
