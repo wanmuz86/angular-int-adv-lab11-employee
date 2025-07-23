@@ -17,6 +17,8 @@ export class EmployeeListItemComponent {
   deleteEmployee(id: number) {
     // Emit an event to delete the employee
     // This method should be implemented in the parent component
+    // Same as non signal use @Output()
+    
     console.log(`Delete employee with id: ${id}`);
   }
   
