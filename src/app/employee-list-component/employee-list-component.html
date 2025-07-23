@@ -3,12 +3,8 @@
     <p>No employee at the moment. Please add new employee</p>
 }
 @else {
+    <!-- @for have a track option to track the changes in the list built in -->
 @for (employee of employees(); track employee.id) {
-<div>
-    <p>Name: {{employee.name}}</p>
-    <p>Department: {{employee.department}}</p>
-    <button (click)="deleteEmployee(employee.id)">Delete Employee
-    </button>
-</div>
+<app-employee-list-item-component [employee]="employee"></app-employee-list-item-component>
 }
 }
