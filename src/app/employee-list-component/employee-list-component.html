@@ -1,0 +1,14 @@
+<h2>Employee List</h2>
+@if(employees().length === 0){
+    <p>No employee at the moment. Please add new employee</p>
+}
+@else {
+@for (employee of employees(); track employee.id) {
+<div>
+    <p>Name: {{employee.name}}</p>
+    <p>Department: {{employee.department}}</p>
+    <button (click)="deleteEmployee(employee.id)">Delete Employee
+    </button>
+</div>
+}
+}

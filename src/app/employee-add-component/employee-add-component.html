@@ -1,0 +1,11 @@
+<h2>Add Employee</h2>
+<!-- Usage of signal in form , using [ngModel] and (ngModelChange) as of 
+ Angular 19 as [(ngModel)]/FormModules is not supported/stable with signals -->
+
+<input type="text" placeholder="Name" name="name" [ngModel]="name()" 
+(ngModelChange)="name.set($event)"/>
+
+<input type="text" placeholder="Department" name="department" 
+[ngModel]="department()" (ngModelChange)="department.set($event)"/>
+
+<button (click)="addEmployee()">Add new Employee</button>
